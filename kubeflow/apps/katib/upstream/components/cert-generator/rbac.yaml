@@ -1,0 +1,53 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata: # kpt-merge: /katib-cert-generator
+  name: katib-cert-generator
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRole|default|katib-cert-generator'
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+      - services
+    verbs:
+      - get
+      - create
+      - delete
+  - apiGroups:
+      - batch
+    resources:
+      - jobs
+    verbs:
+      - get
+  - apiGroups:
+      - admissionregistration.k8s.io
+    resources:
+      - validatingwebhookconfigurations
+      - mutatingwebhookconfigurations
+    verbs:
+      - get
+      - patch
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata: # kpt-merge: kubeflow/katib-cert-generator
+  name: katib-cert-generator
+  namespace: kubeflow
+  annotations:
+    internal.kpt.dev/upstream-identifier: '|ServiceAccount|kubeflow|katib-cert-generator'
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata: # kpt-merge: /katib-cert-generator
+  name: katib-cert-generator
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRoleBinding|default|katib-cert-generator'
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: katib-cert-generator
+subjects:
+  - kind: ServiceAccount
+    name: katib-cert-generator
+    namespace: kubeflow

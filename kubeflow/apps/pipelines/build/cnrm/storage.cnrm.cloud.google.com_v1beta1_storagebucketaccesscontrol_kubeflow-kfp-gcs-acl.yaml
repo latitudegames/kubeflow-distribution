@@ -1,0 +1,13 @@
+apiVersion: storage.cnrm.cloud.google.com/v1beta1
+kind: StorageBucketAccessControl
+metadata:
+  labels:
+    app: kubeflow-pipelines
+    kf-name: kubeflow
+  name: kubeflow-kfp-gcs-acl
+  namespace: helical-cursor-270620
+spec:
+  bucketRef:
+    name: helical-cursor-270620-kfp
+  entity: user-kubeflow-user@helical-cursor-270620.iam.gserviceaccount.com
+  role: OWNER

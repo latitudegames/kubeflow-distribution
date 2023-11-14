@@ -1,0 +1,14 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicyMember
+metadata:
+  labels:
+    kf-name: kubeflow
+  name: kubeflow-admin-kubeflow-wi
+  namespace: helical-cursor-270620
+spec:
+  member: serviceAccount:helical-cursor-270620.svc.id.goog[kubeflow/kf-admin]
+  resourceRef:
+    apiVersion: iam.cnrm.cloud.google.com/v1beta1
+    kind: IAMServiceAccount
+    name: kubeflow-admin
+  role: roles/iam.workloadIdentityUser

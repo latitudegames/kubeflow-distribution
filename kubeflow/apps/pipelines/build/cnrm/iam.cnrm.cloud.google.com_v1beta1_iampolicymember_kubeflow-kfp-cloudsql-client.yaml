@@ -1,0 +1,17 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicyMember
+metadata:
+  labels:
+    app: kubeflow-pipelines
+    kf-name: kubeflow
+  name: kubeflow-kfp-cloudsql-client
+  namespace: helical-cursor-270620
+spec:
+  memberFrom:
+    serviceAccountRef:
+      name: kubeflow-sql
+  resourceRef:
+    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+    external: projects/helical-cursor-270620
+    kind: Project
+  role: roles/cloudsql.client

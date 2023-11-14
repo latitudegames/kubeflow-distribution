@@ -1,0 +1,18 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: upstream
+upstream:
+  type: git
+  git:
+    repo: https://github.com/kubeflow/manifests
+    directory: /common/kubeflow-namespace
+    ref: v1.7.0
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/kubeflow/manifests
+    directory: /common/kubeflow-namespace
+    ref: v1.7.0
+    commit: e88439aa0d7b705718a386832e873738ff0856df

@@ -1,3 +1,3 @@
-export MGMT_PROJECT=<the project where you deploy your management cluster>
-export MGMT_NAME=<name of your management cluster>
-export LOCATION=<location of your management cluster>
+export MGMT_PROJECT=helical-cursor-270620
+export MGMT_NAME=lat-manage
+export LOCATION=us-central1

@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  admin: sean@latitude.io
+  gcp-sa: kubeflow-user@helical-cursor-270620.iam.gserviceaccount.com
+kind: ConfigMap
+metadata:
+  labels:
+    kustomize.component: profiles
+  name: profiles-config-m9dtkk4c8k
+  namespace: kubeflow
